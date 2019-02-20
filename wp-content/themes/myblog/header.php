@@ -32,24 +32,14 @@
 				<div class="main-nav">
 					<div class="container">
 						<div class="menu-header">
-							<ul>
-								<li class="active"><a href="#">Trang chủ</a></li>
-								<li><a href="#">Giới thiệu</a></li>
-								<li><a href="#">Học HTML</a></li>
-								<li><a href="#">Học CSS</a></li>
-								<li>
-									<a href="#">Học Jquery</a>
-									<ul>
-										<li><a href="#">Học VueJS</a></li>
-										<li><a href="#">Học AngularJs</a></li>
-										<li><a href="#">Học ReactJS</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Học Wordpress</a></li>
-								<li><a href="#">Học ReactJS</a></li>
-								<li><a href="#">Liên hệ</a></li>
-								<div class="clear"></div>
-							</ul>
+							<?php wp_nav_menu( 
+							  array( 
+							      'theme_location' => 'top-menu', 
+							      'container' => 'false', 
+							      'menu_id' => 'top-menu', 
+							      'menu_class' => 'top-menu'
+							   ) 
+							); ?>
 						</div>
 					</div>
 				</div>

@@ -45,7 +45,7 @@ header .main-header {
 	text-decoration: none;
 	transition: all .3s;
 }
-.menu-header ul li.active a{
+.menu-header ul li.current-menu-item a{
 	background: #ef3337;
 }
 .menu-header ul li:hover>a{
@@ -81,6 +81,7 @@ header .main-header {
 .content-nb img{
 	width: 100%;
 	margin-bottom: 10px;
+	object-fit: cover;
 }
 .content-nb h4 {
 	margin-bottom: 10px;
@@ -112,6 +113,8 @@ header .main-header {
 }
 .list-nb .list-post img{
 	width: 100%;
+	height: 200px;
+	object-fit: cover;
 }
 .list-nb .list-post h4 a{
 	font-size: 15px;
