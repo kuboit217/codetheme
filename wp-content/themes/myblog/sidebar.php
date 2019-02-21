@@ -3,12 +3,15 @@
 						<h3>Chuyên mục</h3>
 						<div class="content-w">
 							<ul>
-								<li><a href="#">Học wordpress <span>(152)</span></a></li>
-								<li><a href="#">Học HTML <span>(52)</span></a></li>
-								<li><a href="#">Học CSS <span>(15)</span></a></li>
-								<li><a href="#">Học Jquery <span>(7)</span></a></li>
-								<li><a href="#">Học React Native <span>(8)</span></a></li>
-								<li><a href="#">Chủ đề khác <span>(10)</span></a></li>
+								<?php
+								$args = array(
+								    'child_of'  => 0,
+								    'orderby'    => 'íd',
+								);
+								$categories = get_categories( $args );
+								foreach ( $categories as $category ) { ?>
+								<li><a href="<?php echo get_term_link($category->slug, 'category');?>"><?php echo $category->name; ?> <span>(<?php echo $category->count; ?>)</span></a></li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
@@ -16,36 +19,18 @@
 						<h3>Bài viết mới</h3>
 						<div class="content-new">
 							<ul>
-								<li>
-									<a href="#"><img src="<?php bloginfo('template_directory') ?>/images/news.png" alt=""></a>
-									<h4><a href="#">7 kênh youtube học lập trình web tốt nhất thế giới giúp bạn nâng cao kỹ năng</a></h4>
-									<div class="meta"><span>Ngày đăng: 22-02-2016</span></div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<a href="#"><img src="<?php bloginfo('template_directory') ?>/images/news.png" alt=""></a>
-									<h4><a href="#">Học HTML & CSS, học front end thông qua dự án thực tế</a></h4>
-									<div class="meta"><span>Ngày đăng: 22-02-2016</span></div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<a href="#"><img src="<?php bloginfo('template_directory') ?>/images/news.png" alt=""></a>
-									<h4><a href="#">5 frameworks frontend miễn phí tốt nhất cho dự án web của bạn</a></h4>
-									<div class="meta"><span>Ngày đăng: 22-02-2016</span></div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<a href="#"><img src="<?php bloginfo('template_directory') ?>/images/news.png" alt=""></a>
-									<h4><a href="#">Những đoạn code hay dùng trong lập trình theme woocommecre wordpressg</a></h4>
-									<div class="meta"><span>Ngày đăng: 22-02-2016</span></div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<a href="#"><img src="<?php bloginfo('template_directory') ?>/images/news.png" alt=""></a>
-									<h4><a href="#">Share plugin get bài viết từ 10 trang báo nổi tiếng của Việt Nam</a></h4>
-									<div class="meta"><span>Ngày đăng: 22-02-2016</span></div>
-									<div class="clear"></div>
-								</li>
+								<!-- Get post News Query -->
+								<?php $getposts = new WP_query(); $getposts->query('post_status=publish&showposts=5&post_type=post'); ?>
+								<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+								<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+									<li>
+										<a href="<?php the_permalink(); ?>"><?php echo get_the_post_thumbnail( $post_id, 'full', array( 'class' =>'thumnail') ); ?></a>
+										<h4><a href="#"><?php the_title(); ?></a></h4>
+										<div class="meta"><span>Ngày đăng: <?php echo get_the_date(); ?></span></div>
+										<div class="clear"></div>
+									</li>
+								<?php endwhile; wp_reset_postdata(); ?>
+								<!-- Get post News Query -->
 							</ul>
 						</div>
 					</div>

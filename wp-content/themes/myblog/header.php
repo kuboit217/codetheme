@@ -18,7 +18,9 @@
 							<div class="col-xs-12 col-sm-12 col-md-3">
 								<div class="logo">
 									<a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="Blog Huy kira"></a>
-									<h1><?php bloginfo('name'); ?></h1>
+									<?php if(is_home()){ ?>
+										<h1><?php bloginfo('name'); ?></h1>
+									<?php } ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-9">

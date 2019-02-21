@@ -125,6 +125,7 @@ header .main-header {
 	margin-right: 10px;
 	height: 150px;
 	width: 265px;
+	object-fit: cover;
 }
 .post-news .content-news .news-detail h4 a{
 	font-size: 22px;
